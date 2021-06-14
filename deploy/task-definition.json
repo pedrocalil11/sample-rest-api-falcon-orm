@@ -1,0 +1,74 @@
+{
+    "executionRoleArn": "%EXECUTION_ROLE_ARN",
+    "containerDefinitions": [
+      {
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/%SERVICE_NAME",
+            "awslogs-region": "%AWS_REGION",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "entryPoint": [],
+        "portMappings": [
+          {
+            "hostPort": 0,
+            "protocol": "tcp",
+            "containerPort": 3000
+          }
+        ],
+        "cpu": 270,
+        "environment": [
+          {
+            "name": "APP_ENV",
+            "value": "%ENVIRONMENT"
+          },
+          {
+            "name": "AWS_DEFAULT_REGION",
+            "value": "%AWS_REGION"
+          },
+          {
+            "name": "DB_HOSTNAME",
+            "value": "%DB_HOSTNAME"
+          },
+          {
+            "name": "DB_PORT",
+            "value": "5432"
+          },
+          {
+            "name": "DB_USERNAME",
+            "value": "sample_user"
+          },
+          {
+            "name": "DB_NAME",
+            "value": "sample"
+          },
+          {
+            "name": "DB_PASSWORD",
+            "value": "%DB_PASSWORD"
+          },
+          {
+            "name": "MASTER_ADMIN_KEY",
+            "value": "%MASTER_ADMIN_KEY"
+          }
+        ],
+        "mountPoints": [],
+        "memory": 250,
+        "volumesFrom": [],
+        "image": "%ECR_IMAGE",
+        "essential": true,
+        "name": "%SERVICE_NAME"
+      }
+    ],
+    "placementConstraints": [],
+    "memory": "260",
+    "taskRoleArn": "%TASK_ROLE_ARN",
+    "family": "%SERVICE_NAME",
+    "requiresCompatibilities": [
+      "EC2"
+    ],
+    "networkMode": "bridge",
+    "cpu": "280",
+    "volumes": []
+  }

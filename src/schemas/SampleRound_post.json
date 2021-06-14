@@ -1,0 +1,18 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "start_date": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 100,
+            "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])([+-])(1[0-2]|[0][0-9]):(30|00)$"
+        }
+    },
+    "required": ["name","start_date"]
+}
